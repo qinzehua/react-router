@@ -7,12 +7,12 @@
     <title>React App</title>
   </head>
   <body>
-    <div id="root"></div>
-
+    <div>xx</div>
     <script>
-      window.addEventListener("hashchange", function (e) {
-        console.log(e);
-      });
+      var globalHistory = window.history;
+      setTimeout(function () {
+        let oldhistory = globalHistory.pushState({}, null, "/a");
+      }, 1000);
     </script>
   </body>
 </html>
