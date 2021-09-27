@@ -3,7 +3,7 @@ const User = (props) => {
     <div>
       User
       <button onClick={() => props.history.goBack()}>返回</button>
-      <button onClick={() => props.history.goForward()}>前进</button>
+      <button onClick={() => props.history.push("/profile")}>/profile</button>
     </div>
   );
 };
