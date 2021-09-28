@@ -16,8 +16,6 @@ class Switch extends React.Component {
       }
     });
 
-    console.log(match);
-
     return match ? element : null;
   }
 }

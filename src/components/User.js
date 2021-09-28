@@ -1,9 +1,23 @@
+import UserAdd from "./UserAdd";
+import UserList from "./UserList";
+import UserDetail from "./UserDetail";
+
+import { Link, Route } from "../react-router-dom";
+
 const User = (props) => {
   return (
     <div>
-      User
-      <button onClick={() => props.history.goBack()}>返回</button>
-      <button onClick={() => props.history.push("/profile")}>/profile</button>
+      <ul>
+        <li>
+          <Link to="/user/list">用户列表</Link>
+        </li>
+        <li>
+          <Link to="/user/add">添加用户</Link>
+        </li>
+      </ul>
+      <Route path="/user/list" component={UserList} />
+      <Route path="/user/add" component={UserAdd} />
+      <Route path="/user/detail/:id" component={UserDetail} />
     </div>
   );
 };

@@ -34,6 +34,10 @@ function createBrowserHistory() {
 
   function push(pathname, state) {
     action = "PUSH";
+    if (typeof pathname === "object") {
+      state = pathname.state;
+      pathname = pathname.pathname;
+    }
     globalHistory.pushState(state, null, pathname);
     let location = { state, pathname };
     setState({ action, location });
