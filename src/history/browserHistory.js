@@ -38,9 +38,23 @@ function createBrowserHistory() {
       state = pathname.state;
       pathname = pathname.pathname;
     }
+    if (message) {
+      let showMeesage = message({ pathname: pathname });
+      let allow = window.confirm(showMeesage);
+      if (!allow) {
+        return;
+      }
+    }
     globalHistory.pushState(state, null, pathname);
     let location = { state, pathname };
     setState({ action, location });
+  }
+  let message;
+  function blcok(newMessage) {
+    message = newMessage;
+    return () => {
+      message = "";
+    };
   }
 
   const history = {
@@ -54,6 +68,7 @@ function createBrowserHistory() {
       pathname: window.location.pathname,
       state: window.history.state,
     },
+    blcok,
   };
 
   window.onpopstate = function (event) {

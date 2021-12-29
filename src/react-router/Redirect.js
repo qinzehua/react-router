@@ -9,7 +9,6 @@ function Redirect({ to }) {
         return (
           <LifeCycle
             onMount={() => {
-              console.log(value.history, to);
               value.history.push(to);
             }}
           />

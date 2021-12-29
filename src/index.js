@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import {
-  HashRouter,
   BrowserRouter,
   Route,
   Redirect,
@@ -12,8 +11,13 @@ import Home from "./components/Home";
 import User from "./components/User";
 import Profile from "./components/Profile";
 
+import Protected from "./components/Protected";
+import Login from "./components/Login";
+import NavBar from "./components/NavBar";
+
 ReactDOM.render(
   <BrowserRouter>
+    <NavBar title="返回首页" />
     <ul>
       <li>
         <Link to="/">首页</Link>
@@ -28,7 +32,8 @@ ReactDOM.render(
     <Switch>
       <Route path="/" component={Home} exact />
       <Route path="/user" component={User} />
-      <Route path="/profile" component={Profile} />
+      <Route path="/login" component={Login} />
+      <Protected path="/profile" component={Profile} />
       <Redirect to="/" />
     </Switch>
   </BrowserRouter>,

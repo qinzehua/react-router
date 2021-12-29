@@ -7,13 +7,17 @@ class Route extends React.Component {
 
   render() {
     const { history, location } = this.context;
-    const { component: RouteComponent } = this.props;
+    const { component: RouteComponent, render } = this.props;
     const match = mathcPath(location.pathname, this.props);
     let routeProps = { history, location };
     let renderElement = null;
     if (match) {
       routeProps.match = match;
-      renderElement = <RouteComponent {...routeProps} />;
+      if (render) {
+         renderElement = render(routeProps);
+      } else {
+        renderElement = <RouteComponent {...routeProps} />;
+      }
     }
 
     return renderElement;
